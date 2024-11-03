@@ -1,0 +1,238 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    
+}
+.welcome-container {
+    text-align: center;
+    padding: 20px;
+    background-image: url('dark.jpg');
+    background-size: cover;    
+    background-position:center;
+    background-attachment:fixed;
+}
+.title {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    animation: slide-in 1s ease-out;
+}
+.subtitle {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+    color: #cccccc;
+}
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+h1 {
+    color: #333;
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+    color: #666;
+}
+#fantasyScreen {
+    background-image: url('rostyslav-zagornov-1jxfrhujk2m.jpg'); /* Fantasy theme background */
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;               /* Full viewport height */
+    width: 100vw;                /* Full viewport width */
+    position: absolute;          /* Make it full screen */
+    top: 0;                      /* Align it to the top */
+    left: 0;                     /* Align it to the left */
+}
+/* Styling for the theme cards */
+.theme-selection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.theme-option {
+    width: 24%;  /* Smaller size */
+    margin: 15px;  /* Margin for spacing */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.theme-option img {
+    width: 100%;
+    height: auto;
+}
+
+.theme-option h2 {
+    font-size: 1.2em;  /* Slightly decreased font size */
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.theme-option:hover {
+     transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+/* Container for the description screens */
+.description-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px; /* Extra padding for larger screens */
+    box-sizing: border-box;
+}
+
+/* Enlarged and centered card styling */
+.description-card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    max-width: 700px; /* Increased max width */
+    width: 90%; /* Responsive width */
+    padding: 40px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Title styling inside the card */
+.description-card h1 {
+    font-size: 2.5em; /* Larger font size */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Paragraph styling for description text inside the card */
+.description-card p {
+    font-size: 1.3em; /* Larger font size for better readability */
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+/* Button styling for starting the game inside the card */
+.start-game-button {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+/* Button hover effect */
+.start-game-button:hover {
+    background-color: #0056b3;
+}
+
+/* Game Page */
+.game-container {
+    display: none;
+    text-align: center;
+    max-width: 80%;
+    margin: 1em auto;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.response-box {
+    height: 300px;
+    overflow-y: auto;
+    background: transparent;  /* Light background */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    animation: fadeIn 0.5s ease-in-out; /* Animation for fading in */
+}
+.response-box p {
+    margin: 0;  /* Reset default margins */
+    padding: 5px; /* Padding for each paragraph */
+    border-bottom: 1px solid #ddd; /* Divider for each response */
+}
+
+/* Scrollbar styling */
+.response-box::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.response-box::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Color of the scrollbar */
+    border-radius: 10px; /* Rounded corners for the scrollbar */
+}
+
+.response-box::-webkit-scrollbar-thumb:hover {
+    background-color: #888; /* Color when hovered */
+}
+
+
+#userInput {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#submitButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#submitButton:hover {
+    background-color: #555;
+}
+
+/* Circular Back Button */
+#backButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backButton:hover {
+    background-color: #555;
+}
+/* Animations */
+@keyframes slide-in {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

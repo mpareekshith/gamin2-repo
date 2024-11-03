@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Adventure Game</title>
+    <link rel="stylesheet" href="D:\DATA SCIENCE &AI\dissertation\Main_project\static\main.css">
+</head>
+<body>
+
+    <!-- Phase 1: Welcome & Theme Selection -->
+    <div id="welcomePage" class="welcome-container">
+        <h1 class="title">Welcome to the Text Adventure Game</h1>
+        <p class="subtitle">Choose your adventure theme to start your journey!</p>
+        <h2>Gameplay</h2>
+        <h1>No rules, no objective. Only adventure.</h1>
+        <p>AI Dungeon is a text-based, AI generated<br>
+           fantasy simulation with infinite<br>
+            possibilities. Unlike most games where<br> 
+            you experience worlds created by game<br> 
+            designers, with AI Dungeon, you can direct<br> 
+            the AI to create worlds, characters, and<br> 
+            scenarios for your character to interact<br> 
+            with. You could lead an army fighting back <br>
+            an alien invasion, or be a mythical detective<br>
+             investigating the attempted assasination of<br>
+              the fairy queen.</p>
+        <div class="theme-selection">
+            <div class="theme-option" onclick="selectTheme('fantasy')">
+                <img src="fantacy.jpg" alt="Fantasy">
+                <h2>Fantasy Adventure</h2>
+            </div>
+            <div class="theme-option" onclick="selectTheme('sciFi')">
+                <img src="space.jpg" alt="Sci-Fi">
+                <h2>Space Odyssey</h2>
+            </div>
+            <div class="theme-option" onclick="selectTheme('mystery')">
+                <img src="mystery.webp" alt="Mystery">
+                <h2>Mystery and Thriller</h2>
+            </div>
+            <div class="theme-option" onclick="selectTheme('Adventure')">
+                <img src="medival.webp" alt="Adventure">
+                <h2> Adventure</h2>
+            </div>
+            <div class="theme-option" onclick="selectTheme('Horror')">
+                <img src="Horror.jpg" alt="Horror">
+                <h2> Horror</h2>
+            </div>    
+            <div class="theme-option" onclick="selectTheme('Historical')">
+                <img src="history.avif" alt="Historical">
+                <h2> Historical</h2>    
+            </div>
+        </div>
+    </div>
+        </div>
+
+    <!-- Description Screens -->
+    <div id="fantasyDescriptionScreen" class="description-container" style="display: none;">
+        <div class="description-card">
+            <h2>Fantasy Adventure</h2>
+            <p>Enter a world of magic and mythical creatures...</p>
+            <button id="backButton" onclick="goBack()">&#x2190;</button>
+            <button onclick="startGame('fantasy')">Play</button>
+            </div>
+        </div>
+    <div id="sciFiDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Space Odyssey</h2>
+                <p>Explore the vastness of space and uncover alien mysteries...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button onclick="startGame('sciFi')">Play</button>
+            </div>
+        </div>
+    
+        <div id="mysteryDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Mystery and Thriller</h2>
+                <p>Dive into a world of mystery and suspense...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button onclick="startGame('mystery')">Play</button>
+            </div>
+        </div>
+        <div id="medivalDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>medival</h2>
+                <p>Enter a world of magic and mythical creatures...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button onclick="startGame('medival')">Play</button>
+            </div>
+        </div>
+    <div id="horrorDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Horror</h2>
+                <p>Explore the vastness of space and uncover alien mysteries...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button onclick="startGame('horror')">Play</button>
+            </div>
+        </div>
+    
+        <div id="HistoricalDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Historical</h2>
+                <p>Dive into a world of mystery and suspense...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button onclick="startGame('Historical')">Play</button>
+            </div>
+        </div>
+        <!-- Theme Gameplay Screens -->
+    <div id="fantasyScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Fantasy Adventure</h1>
+        <div  class="response-box" id="fantasyResponseBox"></div>
+        <input type="text" id="fantasyUserInput" placeholder="Enter your command here...">
+        <button onclick="submitInput('fantasy')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="fantasySpeakButton" onclick="speakResponse('fantasy')">&#x1F50A;</button> <!-- Speaker button -->
+    </div>
+
+    <div id="sciFiScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Space Odyssey</h1>
+        <div  class="response-box" id="sciFiResponseBox"></div>
+        <input type="text" id="sciFiUserInput" placeholder="Enter your command here...">
+        <button onclick="submitInput('sciFi')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="sciFiSpeakButton" onclick="speakResponse('sciFi')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+
+    <div id="mysteryScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Mystery and Thriller</h1>
+        <div  class="response-box" id="mysteryResponseBox"></div>
+        <input type="text" id="mysteryUserInput" placeholder="Enter your command here...">
+        <button onclick="submitInput('mystery')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="mysterySpeakButton" onclick="speakResponse('mystery')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+    <div id="AdventureScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Adventure</h1>
+        <div  class="response-box" id="AdventureResponseBox"></div>
+        <input type="text" id="AdventureUserInput" placeholder="Enter your command here...">
+        <button onclick="submitInput('Adventure')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="AdventureSpeakButton" onclick="speakResponse('Adventure')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+    <div id="HorrorScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Horror</h1>
+        <div  class="response-box" id="HorrorResponseBox"></div>
+        <input type="text" id="HorrorUserInput" placeholder="Enter your command here...">
+        <button onclick="submitInput('Horror')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="HorrorSpeakButton" onclick="speakResponse('Horror')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+    <div id="HistoricalScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Historical</h1>
+        <div  class="response-box" id="HistoricalResponseBox"></div>
+        <input type="text" id="HistoricalUserInput" placeholder="Enter your command here...">
+        <button onclick="submitInput('Historical')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="HistoricalSpeakButton" onclick="speakResponse('Historical')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+
+    <script src="D:\DATA SCIENCE &AI\dissertation\Main_project\static\app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
