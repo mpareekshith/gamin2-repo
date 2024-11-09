@@ -72,17 +72,23 @@ async function submitInput(theme) {
             responseDiv.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
             responseDiv.innerHTML += `<p><strong>Game:</strong> ${recentResponse}</p>`;
 
-            // Call the function to convert GPT response to speech
-            textToSpeech(recentResponse);
+            
 
             // Clear the input field
             document.getElementById(`${theme}UserInput`).value = '';
+ // Scroll the response box to the bottom after adding content
+            scrollToBottom(theme);
         } else if (data.error) {
             responseDiv.innerHTML += `<p><strong>Error:</strong> ${data.error}</p>`;
         }
     } catch (error) {
         responseDiv.innerHTML += `<p><strong>Error:</strong> Unable to communicate with the server.</p>`;
     }
+}
+// Function to scroll the response box to the bottom
+function scrollToBottom(theme) {
+    const responseBox = document.getElementById(`${theme}ResponseBox`);  // Get the response box by ID
+    responseBox.scrollTop = responseBox.scrollHeight;  // Set scroll position to the bottom
 }
 // Function to speak or stop speaking the most recent response
 function speakResponse(theme) {
@@ -102,10 +108,12 @@ function speakResponse(theme) {
 }
 // Function to convert GPT response to speech using Web Speech API
 function textToSpeech(text) {
+
     if ('speechSynthesis' in window) {  // Check if the browser supports TTS
         currentSpeech = new SpeechSynthesisUtterance(text);  // Create a SpeechSynthesisUtterance object
         currentSpeech.lang = 'en-GB';  // Set the language to British English
 
+        
         currentSpeech.onend = function() { // Reset speaking state when speech ends
             isSpeaking = false;
             document.getElementById('speakButton').innerHTML = '&#x1F50A;'; // Change button back to speaker on icon
@@ -125,6 +133,18 @@ console.log("Back button clicked"); // Log when back button is clicked
     const welcomePage = document.getElementById("welcomePage");
     const descriptionScreen = document.getElementById(`${selectedTheme}DescriptionScreen`);
     const gameScreen = document.getElementById(`${selectedTheme}Screen`);
+    const responseBox = document.getElementById(`${selectedTheme}ResponseBox`);
+//stop speaking when pressed back
+    if (isSpeaking) {
+        window.speechSynthesis.cancel(); // Stop the speech
+        isSpeaking = false;
+        document.getElementById(`${selectedTheme}SpeakButton`).innerHTML = '&#x1F50A;'; // Change button back to speaker on icon
+    }
+
+    // Clear the response box when the player presses back
+    if (responseBox) {
+        responseBox.innerHTML = ""; // Clear the content of the response box
+    }
 
     // Check if we are on the Game Screen
     if (gameScreen && gameScreen.style.display === "block") {
@@ -143,3 +163,16 @@ console.log("Back button clicked"); // Log when back button is clicked
         console.log("No valid screen found to go back from."); // Debugging log
     }
 }
+ // JavaScript for the Slideshow with Titles and Descriptions
+ let slideIndex = 0;
+ const slides = document.querySelectorAll(".slide");
+
+ function showSlides() {
+     slides.forEach(slide => slide.style.display = "none"); // Hide all slides
+     slideIndex = (slideIndex + 1) % slides.length; // Increment index with wrap-around
+     slides[slideIndex].style.display = "block"; // Show the current slide
+     setTimeout(showSlides, 4000); // Change slide every 4 seconds
+ }
+
+ // Start the slideshow on load
+ document.addEventListener("DOMContentLoaded", showSlides);
