@@ -11,6 +11,11 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+# Homepage route
+@app.route('/')
+def home():
+    # Renders a basic HTML template if you have an `index.html` in the `templates` folder
+    return render_template('index.html')
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -59,4 +64,6 @@ def chat():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Bind to Heroku’s dynamically assigned port
+    port = int(os.environ.get('PORT', 5000))  # Default to port 5000 for local testing
+    app.run(host='0.0.0.0', port=port)

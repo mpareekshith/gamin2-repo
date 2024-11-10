@@ -1,0 +1,474 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    
+}
+.welcome-container {
+    text-align: center;
+    padding: 20px;
+    background-image: url('380606.jpg');  /* Main top background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;  /* Covers the full viewport height */
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+    color: #fbf8f8;
+}
+.fade-in {
+    animation: fadeIn 2s ease-in-out;
+}
+#shifter{
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+    color: #fbf8f8;
+}
+h1 {
+    color: #333;
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+    color: #666;
+}
+#fantasyScreen {
+    background-image: url('fantasy.jpg'); /* Fantasy theme background */
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;               /* Full viewport height */
+    width: 100vw;                /* Full viewport width */
+    position: absolute;          /* Make it full screen */
+    top: 0;                      /* Align it to the top */
+    left: 0;                     /* Align it to the left */
+}
+/* Styling for the theme cards */
+.theme-selection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.theme-option {
+    width: 24%;  /* Smaller size */
+    margin: 15px;  /* Margin for spacing */
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.theme-option img {
+    width: 100%;
+    height: 70%;
+}
+
+.theme-option h2 {
+    font-size: 1.2em;  /* Slightly decreased font size */
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+}
+.theme-option p{
+    color: whitesmoke;
+}
+
+.theme-option:hover {
+     transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 1.0);
+}
+/* Container for the description screens */
+.description-container {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent dark background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px; /* Extra padding for larger screens */
+    box-sizing: border-box;
+}
+
+/* Enlarged and centered card styling */
+#fantasyDescriptionScreen{
+    background-image: url('pintrest2.jpg');
+}
+#sciFiDescriptionScreen{
+    background-image: url('https://img.freepik.com/premium-photo/stunning-3d-view-earth-from-space_1111209-2936.jpg');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+}
+#mysteryDescriptionScreen{
+    background-image: url('https://www.chapterly.com/_next/image?url=%2Fimages%2Fplot-generator%2Fcrime-fiction.png&w=1920&q=75');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+}
+#AdventureDescriptionScreen{
+    background-image: url('https://ai-adventure.steamship.com/adventurer.png');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+}
+#HorrorDescriptionScreen{
+    background-image: url('https://rs-rooms-cdn.floorplanner.com/rooms/images/pvLTi6AyNymi9R-r.jpg');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+}
+#HistoricalDescriptionScreen{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/023/529/152/large_2x/zombie-apocalypse-3d-surrealrealistic-illustration-in-an-abandoned-city-ai-generated-free-photo.jpg');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+}
+#fantasyScreen {
+    background-image: url('https://imagedelivery.net/DPSHeCXswmvoQXsmqJ-mDA/409c2e8d-4e1a-4c4c-df27-a25e70efed00/foil');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+    
+}
+#sciFiScreen {
+    background-image: url('https://cdn.pixabay.com/photo/2023/12/04/07/26/astronaut-8428865_1280.jpg');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+    
+}
+#mysteryScreen {
+    background-image: url('https://imgmedia.lbb.in/media/2024/04/661e470369063409810e9d89_1713260291238.jpg');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+    
+}
+#HorrorScreen{
+    background-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1575730/ss_7fedaccc97409d8546df330b52f25b8808cc3509.1920x1080.jpg?t=1617981492');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;  
+}
+#HistoricalScreen{
+    background-image: url('https://i.redd.it/vyyieln4gd651.jpg');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;  
+}
+
+
+
+
+.description-card {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+    max-width: 700px; /* Increased max width */
+    width: 90%; /* Responsive width */
+    padding: 40px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Title styling inside the card */
+.description-card h1 {
+    font-size: 2.5em; /* Larger font size */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Paragraph styling for description text inside the card */
+.description-card p {
+    font-size: 1.3em; /* Larger font size for better readability */
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #ffffff;
+    
+}
+
+/* Button styling for starting the game inside the card */
+.start-game-button {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 1.2em;
+    color: #ffffff;
+    background-color: #fc9219;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    animation: heartbeat 1.7s infinite;
+}
+
+/* Button hover effect */
+.start-game-button:hover {
+    background-color: #fccd54;
+}
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(0.9);
+    }
+    20% {
+        transform: scale(1.1); /* Slightly larger */
+    }
+    40% {
+        transform: scale(0.9); /* Back to normal size */
+    }
+    60% {
+        transform: scale(1.1); /* Larger again */
+    }
+    80% {
+        transform: scale(0.9); /* Back to normal size */
+    }
+}
+.des-img {
+    width: 50%; /* Adjust the percentage to control the size relative to its container */
+    max-width: 200px; /* Set a maximum width in pixels if needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Center the image if needed */
+    margin: 0 auto; /* Center the image horizontally */
+    border-radius: 10px; /* Optional: round the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: add a subtle shadow */
+}
+/* Game Page all the styling for the game screen starts from here */
+.game-container {
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    position: relative; /* Ensure it behaves within the body */
+    display: none;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+.game-title{
+    color: #ffffff;
+
+}
+
+.response-box {
+    height: 450px;
+    width: 60%; 
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.7);;  /* Light background */
+    color: white;             /* Text color to be white */
+    padding: 20px;            /* Padding inside the box */
+    border-radius: 10px;      /* Rounded corners */
+    font-size: 1.1em;    
+    margin-top: 20px;         /* Adds spacing from the elements above */
+    margin-left: 230px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    text-align: left;
+    animation: fadeIn 0.5s ease-in-out; /* Animation for fading in */
+}
+.response-box p {
+    margin: 0;  /* Reset default margins */
+    padding: 5px; /* Padding for each paragraph */
+    border-bottom: 1px solid #ddd; /* Divider for each response */
+}
+
+/* Scrollbar styling */
+.response-box::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.response-box::-webkit-scrollbar-thumb {
+    background-color: #cccccc; /* Color of the scrollbar */
+    border-radius: 10px; /* Rounded corners for the scrollbar */
+}
+
+.response-box::-webkit-scrollbar-thumb:hover {
+    background-color: #888; /* Color when hovered */
+}
+
+#fantasyUserInput,
+#sciFiUserInput,
+#mysteryUserInput,
+#AdventureUserInput,
+#HorrorUserInput,
+#HistoricalUserInput {
+    width: 50%; /* Adjust width as needed */
+    padding: 12px 20px;
+    font-size: 1.1em;
+    color: #fff; /* Text color */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Light border for better visibility */
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
+    outline: none;
+    transition: all 0.3s ease; /* Smooth transition on focus */
+}
+
+
+#subbutton {
+    padding: 10px 20px;
+    background-color: #fc9219;
+    font-size: 1.3em;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#subbutton:hover {
+    background-color: #fccd54;
+}
+#hisSpeakButton,
+#horSpeakButton,
+#advSpeakButton,
+#mysSpeakButton,
+#spaSpeakButton,
+#fanSpeakButton
+{
+    margin-top: 20px;
+    padding: 5px 5px;
+    background-color: #fc9219;
+    font-size: 1.3em;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+}
+/* Circular Back Button */
+#backButton {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backButton:hover {
+    background-color: #555;
+}
+/* Slideshow Container */
+.slideshow-container {
+    width: 50%;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+/* Slideshow Card */
+.slideshow-card {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+/* Slide */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none; /* Hide all slides initially */
+}
+
+/* Show the first slide initially */
+.slide:first-child {
+    display: block;
+}
+
+/* Slideshow Image */
+.slideshow-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7; /* Darken the image slightly for readability of text */
+}
+
+/* Slide Content */
+.slide-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
+}
+
+.slide-content h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.3em;
+}
+
+.slide-content p {
+    font-size: 1.1em;
+    max-width: 80%;
+}
+/* Animations */
+@keyframes slide-in {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.title {
+    font-size: 8rem;
+    margin-bottom: 0.5em;
+    color: #ffffff;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-50px);
+    /* Slide in first, then start glowing with a delay */
+    animation: slide-in 2s ease-out forwards, color-glow 3s ease-in-out 3s infinite alternate;
+}
+
+/* Slide-in animation from the top */
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Continuous glowing effect after slide-in */
+@keyframes color-glow {
+    0% {
+        text-shadow: 0 0 0px #f3efe3, 0 0 8px #f3efe3, 0 0 28px #f3efe3;
+        color: #f3efe3;
+    }
+    50% {
+        text-shadow: 0 0 0px #f9f7f5, 0 0 0px #f9f7f5, 0 0 0px #f9f7f5;
+        color: #f9f7f5;
+    }
+    100% {
+        text-shadow: 0 0 0px #ffffff, 0 0 0px #ffffff, 0 0 0px #ffffff;
+        color: #ffffff;
+    }
+}

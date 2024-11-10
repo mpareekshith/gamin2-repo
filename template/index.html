@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Adventure Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+
+    <!-- Phase 1: Welcome & Theme Selection -->
+    <div id="welcomePage" class="welcome-container">
+        <h1 class="title">Dungeon-AI</h1>
+       <div class="rules-container">
+        <h1 id="shifter">No rules, no objective. Only adventure.</h1>
+        </div>       
+
+        <!-- Slideshow Card for Theme Images -->
+        <div class="slideshow-container">
+            <div class="slideshow-card">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <img src="https://wp.technologyreview.com/wp-content/uploads/2022/09/greg-rutkowski-dragon-cave-square.jpg" alt="Fantasy" class="slideshow-image">
+                    <div class="slide-content">
+                        <h2>Fantasy Adventure</h2>
+                        <p>Step into a world of magic and mythical creatures. Uncover secrets, and face dragons, wizards, and enchanted forests.</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="https://img.freepik.com/premium-photo/picture-planet-with-words-space-side_1198230-34034.jpg" alt="Sci-Fi" class="slideshow-image">
+                    <div class="slide-content">
+                        <h2>Space Odyssey</h2>
+                        <p>Explore the vast reaches of space, encounter alien civilizations, and uncover the mysteries of the universe.</p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="https://t4.ftcdn.net/jpg/03/68/59/13/360_F_368591320_0xLZOXcv9wRwN148yCFaRloLYgJgp4yf.jpg" alt="Mystery" class="slideshow-image">
+                    <div class="slide-content">
+                        <h2>Mystery and Thriller</h2>
+                        <p>Become a detective in a world filled with suspense. Solve puzzles, and unravel mysteries in thrilling scenarios.</p>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <img src="https://img.freepik.com/premium-photo/fantasy-battle-archery-action_934697-12293.jpg" alt="Adventure" class="slideshow-image">
+                    <div class="slide-content">
+                        <h2>Medieval Adventure</h2>
+                        <p>Travel back to the medieval era, where knights, castles, and quests await. Will you emerge as a hero?</p>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="slide">
+                    <img src="https://img.freepik.com/premium-photo/child-nightmare-with-scary-monster-bedroom_334978-791.jpg" alt="Horror" class="slideshow-image">
+                    <div class="slide-content">
+                        <h2>Horror</h2>
+                        <p>Enter a dark and eerie world. Face terrifying creatures and uncover the spine-chilling truth.</p>
+                    </div>
+                </div>
+                <!-- Slide 6 -->
+                <div class="slide">
+                    <img src="https://preview.redd.it/vyyieln4gd651.jpg?width=1080&crop=smart&auto=webp&s=8eb13e9df19a8d645a3c09435d2d0d447058b151" alt="Historical" class="slideshow-image">
+                    <div class="slide-content">
+                        <h2>Zombie Apocalypse</h2>
+                        <p>Relive historical events and experience stories of bravery, wisdom, and power from the past.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="subtitle">Choose your adventure theme to start your journey!</p>
+        <div class="theme-selection">
+            <div class="theme-option" onclick="selectTheme('fantasy')">
+                <img src="fantasy.jpg" alt="Fantasy">
+                <h2>Fantasy Adventure</h2>
+                <p>welcome to the fantasy world of wonderland where magic drives the world</p>
+            </div>
+            <div class="theme-option" onclick="selectTheme('sciFi')">
+                <img src="ai-space.webp" alt="Sci-Fi">
+                <h2>Space Odyssey</h2>
+                <p>Embark on a journey through the stars, where technology and mysteries of the cosmos await.</p>
+            </div>
+            <div class="theme-option" onclick="selectTheme('mystery')">
+                <img src="mystry&thriller.jpg" alt="Mystery">
+                <h2>Mystery and Thriller</h2>
+                <p>step into a dark and suspenseful world where every clue unravels a deeper secret.</p>
+            </div>
+            <div class="theme-option" onclick="selectTheme('Adventure')">
+                <img src="medival.webp" alt="Adventure">
+                <h2> Adventure</h2>
+                <p>Dive into a thrilling expedition across uncharted jungles and ancient ruins.</p>
+            </div>
+            <div class="theme-option" onclick="selectTheme('Horror')">
+                <img src="Horror.jpg" alt="Horror">
+                <h2> Horror</h2>
+                <p>Enter a chilling realm where shadows lurk, and every sound could be the last thing you hear.</p>
+            </div>    
+            <div class="theme-option" onclick="selectTheme('Historical')">
+                <img src="https://img.freepik.com/premium-photo/zombie-apocalypse_602424-840.jpg" alt="Historical">
+                <h2>Zombie Apocalypse</h2>   
+                <p>Journey back in time to witness and shape the events that changed history forever.</p> 
+            </div>
+        </div>
+    </div>
+        </div>
+
+    <!-- Description Screens -->
+    <div id="fantasyDescriptionScreen" class="description-container" style="display: none;">
+        <div class="description-card">
+            <h2>Fantasy Adventure</h2>
+            <img class="des-img" src="https://img.freepik.com/premium-photo/visionary-elf-glowing-sunset-majestic-fantasy-landscape_934697-42432.jpg?w=360" alt="">
+            <p>Embark on a journey through mystical realms, encountering magical creatures, brave heroes, and dark sorcery. Every choice could shape your destiny in this enchanted world.</p>
+            <button id="backButton" onclick="goBack()">&#x2190;</button>
+            <button class="start-game-button" onclick="startGame('fantasy')">&#9655;Play</button>
+            </div>
+        </div>
+    <div id="sciFiDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Space Odyssey</h2>
+                <img class="des-img" src="https://img.freepik.com/premium-photo/astronaut-looking-out-space-window_861171-1409.jpg" alt="">
+                <p>Explore the vastness of space and uncover alien mysteries...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button class="start-game-button" onclick="startGame('sciFi')">&#9655;Play</button>
+            </div>
+        </div>
+    
+        <div id="mysteryDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Mystery and Thriller</h2>
+                <img class="des-img" src="https://img.freepik.com/premium-photo/murder-mystery_1029473-194793.jpg" alt="mystimg">
+                <p>Dive into a world of mystery and suspense...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button class="start-game-button" onclick="startGame('mystery')">&#9655;Play</button>
+            </div>
+        </div>
+        <div id="AdventureDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Adventure</h2>
+                <p>Enter a world of thrill and exploration...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button class="start-game-button" onclick="startGame('Adventure')">&#9655;Play</button>
+            </div>
+        </div>
+        
+        <div id="HorrorDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Horror</h2>
+                <img class="des-img" src="https://img.freepik.com/premium-photo/dark-monster-character_910054-41377.jpg" alt="horimg">
+                <p>Face your fears in a haunted world...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button class="start-game-button" onclick="startGame('Horror')">&#9655;Play</button>
+            </div>
+        </div>
+    
+        <div id="HistoricalDescriptionScreen" class="description-container" style="display: none;">
+            <div class="description-card">
+                <h2>Zombie Apocalypse</h2>
+                <p>Dive into a world of mystery and suspense...</p>
+                <button id="backButton" onclick="goBack()">&#x2190;</button>
+                <button class="start-game-button" onclick="startGame('Historical')">&#9655;Play</button>
+            </div>
+        </div>
+        <!-- Theme Gameplay Screens -->
+    <div id="fantasyScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Fantasy Adventure</h1>
+        <div  class="response-box" id="fantasyResponseBox"></div>
+        <input type="text" id="fantasyUserInput" placeholder="Enter your command here...">
+        <button id="subbutton" onclick="submitInput('fantasy')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="fanSpeakButton" onclick="speakResponse('fantasy')">&#x1F50A;</button> <!-- Speaker button -->
+    </div>
+
+    <div id="sciFiScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Stellar Chronicles</h1>
+        <div  class="response-box" id="sciFiResponseBox"></div>
+        <input type="text" id="sciFiUserInput" placeholder="Enter your command here...">
+        <button id="subbutton" onclick="submitInput('sciFi')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="spaSpeakButton" onclick="speakResponse('sciFi')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+
+    <div id="mysteryScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Whispers in the Shadows</h1>
+        <div  class="response-box" id="mysteryResponseBox"></div>
+        <input type="text" id="mysteryUserInput" placeholder="Enter your command here...">
+        <button id="subbutton" onclick="submitInput('mystery')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="mysSpeakButton" onclick="speakResponse('mystery')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+    <div id="AdventureScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">The Lost Expedition</h1>
+        <div  class="response-box" id="AdventureResponseBox"></div>
+        <input type="text" id="AdventureUserInput" placeholder="Enter your command here...">
+        <button id="subbutton" onclick="submitInput('Adventure')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="advSpeakButton" onclick="speakResponse('Adventure')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+    <div id="HorrorScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">Eternal Nightmares</h1>
+        <div  class="response-box" id="HorrorResponseBox"></div>
+        <input type="text" id="HorrorUserInput" placeholder="Enter your command here...">
+        <button id="subbutton" onclick="submitInput('Horror')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="horSpeakButton" onclick="speakResponse('Horror')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+    <div id="HistoricalScreen" class="game-container" style="display: none;">
+        <h1 class="game-title">The Last Stand</h1>
+        <div  class="response-box" id="HistoricalResponseBox"></div>
+        <input type="text" id="HistoricalUserInput" placeholder="Enter your command here...">
+        <button id="subbutton" onclick="submitInput('Historical')">Submit</button>
+        <button id="backButton" onclick="goBack()">&#x2190;</button>
+        <button id="hisSpeakButton" onclick="speakResponse('Historical')">&#x1F50A;</button> <!-- Unique Speaker button -->
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
