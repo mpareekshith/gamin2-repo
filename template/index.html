@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Adventure Game</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
@@ -109,7 +109,7 @@
         <div class="description-card">
             <h2>Fantasy Adventure</h2>
             <img class="des-img" src="https://img.freepik.com/premium-photo/visionary-elf-glowing-sunset-majestic-fantasy-landscape_934697-42432.jpg?w=360" alt="">
-            <p>Embark on a journey through mystical realms, encountering magical creatures, brave heroes, and dark sorcery. Every choice could shape your destiny in this enchanted world.</p>
+            <p>Get ready to embark on an epic adventure, Wanderer! The mystical world is full of enchanted forests, glowing rivers, and towering castles. Strange creatures and ancient secrets await you as your choices lead you through a land of wonder, danger, and discovery. Every decision shapes your destiny in this magical realm</p>
             <button id="backButton" onclick="goBack()">&#x2190;</button>
             <button class="start-game-button" onclick="startGame('fantasy')">&#9655;Play</button>
             </div>
@@ -118,7 +118,7 @@
             <div class="description-card">
                 <h2>Space Odyssey</h2>
                 <img class="des-img" src="https://img.freepik.com/premium-photo/astronaut-looking-out-space-window_861171-1409.jpg" alt="">
-                <p>Explore the vastness of space and uncover alien mysteries...</p>
+                <p>Get ready to board, Captain! Your motivated crew is ready to navigate uncharted star systems and strange planets. Encounter unexpected challenges and discoveries as your decisions shape the journey, guiding the fate of your crew and the success of your mission. Every moment is a dynamic, thrilling adventure through the unknown cosmos...</p>
                 <button id="backButton" onclick="goBack()">&#x2190;</button>
                 <button class="start-game-button" onclick="startGame('sciFi')">&#9655;Play</button>
             </div>
@@ -128,7 +128,7 @@
             <div class="description-card">
                 <h2>Mystery and Thriller</h2>
                 <img class="des-img" src="https://img.freepik.com/premium-photo/murder-mystery_1029473-194793.jpg" alt="mystimg">
-                <p>Dive into a world of mystery and suspense...</p>
+                <p>In a suspenseful mystery setting, you, the detective's assistant, must help solve a perplexing case. With unexpected twists and offbeat inputs from the player, the story evolves as you uncover clues, face suspects, and uncover dark secrets, ensuring that each decision brings you closer to solving the mystery.</p>
                 <button id="backButton" onclick="goBack()">&#x2190;</button>
                 <button class="start-game-button" onclick="startGame('mystery')">&#9655;Play</button>
             </div>
@@ -136,7 +136,7 @@
         <div id="AdventureDescriptionScreen" class="description-container" style="display: none;">
             <div class="description-card">
                 <h2>Adventure</h2>
-                <p>Enter a world of thrill and exploration...</p>
+                <p>Lost in a dense jungle after a tragic accident, you, the explorer, are surrounded by dangerous wildlife and must find a way out. As you navigate the perilous terrain, uncover hidden secrets, and encounter ancient threats, every decision you make impacts your survival and escape from the jungle.</p>
                 <button id="backButton" onclick="goBack()">&#x2190;</button>
                 <button class="start-game-button" onclick="startGame('Adventure')">&#9655;Play</button>
             </div>
@@ -146,7 +146,7 @@
             <div class="description-card">
                 <h2>Horror</h2>
                 <img class="des-img" src="https://img.freepik.com/premium-photo/dark-monster-character_910054-41377.jpg" alt="horimg">
-                <p>Face your fears in a haunted world...</p>
+                <p>Trapped inside a haunted house after a mysterious event, you, the investigator, must uncover its chilling secrets and escape. As you navigate dark, shadowy rooms, encounter ghostly apparitions, and piece together eerie events, your choices shape the terrifying experience and the dark truths of the house.</p>
                 <button id="backButton" onclick="goBack()">&#x2190;</button>
                 <button class="start-game-button" onclick="startGame('Horror')">&#9655;Play</button>
             </div>
@@ -155,7 +155,7 @@
         <div id="HistoricalDescriptionScreen" class="description-container" style="display: none;">
             <div class="description-card">
                 <h2>Zombie Apocalypse</h2>
-                <p>Dive into a world of mystery and suspense...</p>
+                <p>Awakening in a hospital in London during the early days of a zombie apocalypse, you must navigate the desolate city to find your missing sister. Moving through iconic London landmarks while evading zombies and scavenging for supplies, your choices will dictate your survival in this gripping and deadly journey.</p>
                 <button id="backButton" onclick="goBack()">&#x2190;</button>
                 <button class="start-game-button" onclick="startGame('Historical')">&#9655;Play</button>
             </div>
@@ -212,7 +212,7 @@
         <button id="hisSpeakButton" onclick="speakResponse('Historical')">&#x1F50A;</button> <!-- Unique Speaker button -->
     </div>
 
-    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+    <script src="app.js" defer></script>
 </body>
 </html>
 

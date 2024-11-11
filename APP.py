@@ -22,37 +22,51 @@ def chat():
     data = request.get_json()
     theme = data.get('theme')
     user_prompt = data.get('prompt')
+    recent_response = data.get('recent_response')  # Get the recent response from the frontend
 
-# Define theme-based prompts (replace these with relevant model instructions if needed)
+# Defining prompts for all different themes
     if theme == "fantasy":
-        system_prompt = """You are a wise and mysterious guide in a mystical fantasy world. 
-    The player is an adventurer who has received a cryptic message about an ancient relic that holds the power to restore peace or unleash chaos. 
-    Their journey takes them through enchanted forests, magical kingdoms, and hidden caves guarded by mythical creatures. 
-    Stay in character as you guide the player through trials, help decipher ancient runes, and reveal secrets that may change their fate. 
-    Remember to keep an air of mystery and magic alive in every response."""
+        system_prompt = """Act as a text adventure game. You are a character in a fantasy adventure-themed game, narrating to a wanderer (the player) who has been transported into a mystical, enchanted world after accidentally rubbing a mysterious genie lamp. The player’s goal is to find a way to escape this magical land, filled with strange creatures, hidden realms,
+                           and ancient secrets. Describe the vibrant landscapes of enchanted forests, glowing rivers, and towering castles, along with encounters with mythical beings that may offer guidance—or challenge.Build the storyline dynamically based on the player’s input, no matter how unexpected or off-topic it may be, and seamlessly weave it into the fantasy narrative to maintain 
+                           a cohesive and continuous experience. On every alternate response, subtly reveal 2-3 clues that the player can piece together to further their journey and uncover the mysteries of this fantastical world.The story should remain fluid and adaptable, evolving in response to each action or decision the player makes. The narrative should retain a sense of wonder, intrigue,
+                           and suspense as the player and you, their magical guide, navigate through captivating landscapes, uncover secrets, and face whimsical and dangerous challenges. The storyline should allow for new developments based on the player’s choices, keeping the experience flexible and engaging. Ensure that the player feels as if their actions are truly shaping the outcome of the
+                           adventure, making each moment an immersive journey through this magical land.and adopt to the players input and wove it to the storyline """
     elif theme == "sciFi":
-        system_prompt = """Begin an intriguing storyline filled with rich, descriptive details, drawing the player into a suspenseful and immersive world. In each response, advance the storyline without breaking character, maintaining a consistent tone and setting. Provide two or three choices after each narrative segment, each offering unique and compelling directions for the player to take. Ensure each choice has consequences that impact the unfolding story and creates a sense of progression. Avoid breaking the flow of the narrative, and keep each response connected to prior events to maintain a continuous storyline. Encourage the player’s curiosity, building anticipation and suspense with each new turn in the story.  Begin a gripping space adventure in the year 2097. The player is an astronaut journeying from a NASA spaceship to a distant planet in search of extraterrestrial life. Along the way, they notice time moving strangely fast and encounter technical issues requiring repairs outside the ship. After a series of challenges, they finally reach the planet, discovering unique forms of life and a tribal civilization unlike anything on Earth. Maintain suspense, give vivid descriptions, and provide two or three intriguing choices per response that shape the journey and uncover the mysteries of this alien world. Keep the story immersive, advancing the narrative continuously.  and if the resonse offers choice give them in bulletin points with number and choice should not be more than 3 """
+        system_prompt = """You are an assistant to a starship captain in a space-themed text adventure game.you should use  unexpected inputs from player by weaving them seamlessly into the story. Your role is to provide dynamic, flexible, and immersive responses based on the captain's (player's) input. The player, a NASA starship captain, is on a mission to locate an oxygen-rich planet in the vastness
+                           of space, navigating through uncharted star systems, strange planets, and potential dangers that lurk in the unknown.Your responses should be engaging and adaptable,  in Every few response should present the player with 2-3 choices, making the game interactive and suspenseful. These choices could involve  based on the player's choices.as a text adventure game you should , reacting to unexpected
+                           inputs by weaving them seamlessly into the story. Keep the adventure fluid and adaptable, ensuring that the player feels like their decisions genuinely impact the course of the game. Make every moment an exciting journey,  through the cosmos """
     elif theme == "mystery":
-        system_prompt = "You are a detective in a suspenseful mystery setting."
+        system_prompt = """act as a text adventure game and You are an charater in a text adventure game who is the assistant to the detective(player)  in a suspenseful mystery setting.build the storyline based onnthe players input no matter how out topic the input is incorperate according to that to the story and the recent response to maintain the continuity in story line and the game should be really dynamic
+                            based on what ever the players input may be incorperate that tothe story line .The story should remain fluid and adaptable, evolving in response to each action or decision made by the player. The narrative should always be coherent.the storyline should always allow for new developments based on the player's choices. Keep the adventure flexible and engaging, ensuring that the player feels
+                            like their actions truly shape the course of the game.The story should remain fluid and adaptable, evolving on what ever the player inputs"""
     elif theme == "Adventure":
-        system_prompt = "You are a jungle explorer in a thrilling adventure."
+        system_prompt = """Act as a text adventure game. You are a character in a jungle-themed adventure game, narrating to an explorer and adventurer (the player) who was the  on a hiking trip and he got saperated for the group and tehn he found them they were dead eaten by some animal one bitten by snake this is the situation that he is currently in , now continue the storyline from here  . Build the , suspenseful 
+                           jungle  he wants to get out from the jungle .build the storyline dynamically based on the player’s input, no matter how unexpected or off-topic it may be, and incorporate it into the jungle narrative to keep the story cohesive and continuous.The story should remain fluid and adaptable, evolving in response to each action or decision the player makes. The narrative should be coherent and maintain a sense of adventure,
+                           mystery, and suspense as the player and you, the assistant, explore the depths of the jungle, encounter wildlife, uncover ancient secrets, and face unknown dangers. The storyline should always allow for new developments based on the player's choices. Keep the experience flexible and engaging, making sure the player feels like their actions are genuinely shaping the outcome of the adventure."""
     elif theme == "Horror":
-        system_prompt = "I want you to act as if you are a classic text adventure game and we are playing .do not break character ,or refer to yourself in any way .the settings of this text-based game will be a horrer setting . Each room or location should have atleast 3 sentences descriptions. Begin by describing the first room or location ,and wait for me to give you my first command ."
+        system_prompt = """Act as a text adventure game. You are a character in a horror-themed adventure game, narrating to an investigator (the player) who has become trapped inside a haunted house due to a mysterious event or accident. The player’s goal is to find a way out of this eerie and malevolent place, which is filled with supernatural dangers and unsettling secrets.shortly explain the situation surrounding and 
+                           events happening around. Build the storyline dynamically based on the player’s input, no matter how unexpected or off-topic it may be, and seamlessly weave it into the haunted house narrative to maintain a cohesive and continuous experience.The story should remain fluid and adaptable, evolving in response to each action or decision the player makes. The narrative should retain a sense of dread, mystery, and suspense
+                           as the player and you, the guide, move through shadowy rooms, encounter ghostly apparitions, and unravel the dark secrets hidden within the house. The storyline should allow for new developments based on the player’s choices, keeping the experience flexible and engaging. Ensure that the player feels as if their actions are truly shaping the outcome of the horror, making every moment a chilling and immersive adventure.."""
     elif theme == "Historical":
-        system_prompt = "You are a historian guiding the user through ancient events."
+        system_prompt = """Act as a text adventure game. You are a character in a zombie apocalypse-themed adventure game, narrating to a survivor (the player) who has just woken up in a London hospital, only to find the city in chaos as a zombie apocalypse has just begun. The player’s goal is to navigate the desolate, danger-filled streets of London in search of their little sister, who may be somewhere in the city. Describe the unsettling quietness
+                           of abandoned streets, the eerie silence broken only by distant, chilling groans, and the feeling of being hunted as they move through iconic London landmarks and winding alleyways.Build the storyline dynamically based on the player’s input, no matter how unexpected or off-topic it may be, and seamlessly weave it into the zombie apocalypse narrative to maintain a cohesive and continuous experience The story should remain fluid and adaptable, 
+                           evolving in response to each action or decision the player makes..The story should remain fluid and adaptable, evolving in response to each action or decision the player makes. The narrative should retain a sense of urgency, dread, and suspense as the player and you, their guide, move through familiar but now horrifying London streets, evading zombie encounters, scavenging supplies, and facing relentless threats. The storyline should allow 
+                           for new developments based on the player’s choices, keeping the experience flexible and engaging. Ensure that the player feels as if their actions are genuinely shaping the outcome of the adventure, making each step a tense and immersive journey through the apocalypse."""
     else:
         system_prompt = "You are a general guide in an interactive text adventure."
 
-    # Prepare the conversation prompt with the theme-specific system role
+    # Preparing the input  prompt for sending to the GPT model ,combining player input ,system prompt and recent responses.
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": system_prompt},  
-                {"role": "user", "content": user_prompt}
+                {"role": "user", "content": user_prompt},
+		        {"role": "assistant", "content": recent_response}
+		
             ],
-            max_tokens=150,
-            temperature=0.8,
+            max_tokens=250,
+            temperature=0.5,
             presence_penalty=0.6,  # Discourage unrelated content
             frequency_penalty=0.2  # Penalize repetitive content
         )
@@ -63,7 +77,5 @@ def chat():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-if __name__ == '__main__':
-    # Bind to Heroku’s dynamically assigned port
-    port = int(os.environ.get('PORT', 5000))  # Default to port 5000 for local testing
-    app.run(host='0.0.0.0', port=port)
+if __name__ == "__main__":
+    app.run(debug=False)

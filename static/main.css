@@ -158,6 +158,12 @@ p {
     background-repeat: no-repeat;
     
 }
+#AdventureScreen {
+    background-image: url('https://images.stockcake.com/public/c/0/e/c0e5d1b4-6534-4ba9-826c-d5b911bac4d7_large/jungle-adventure-walk-stockcake.jpg');
+    background-size: cover; /* Scales the image to cover the entire element */
+    background-position: center; /* Centers the image within the element */
+    background-repeat: no-repeat;
+}
 #HorrorScreen{
     background-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1575730/ss_7fedaccc97409d8546df330b52f25b8808cc3509.1920x1080.jpg?t=1617981492');
     background-size: cover; /* Scales the image to cover the entire element */

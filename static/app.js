@@ -53,13 +53,17 @@ async function submitInput(theme) {
     const responseDiv = document.getElementById(`${theme}ResponseBox`); // Response box to display messages
 
     try {
-        // Send the user input to the backend
+        // Send the user inputand recent response to the backend
         const response = await fetch('http://localhost:5000/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ prompt: userInput, theme: theme })
+            body: JSON.stringify({
+                prompt: userInput,   // Send the current user input
+                theme: theme,        // Send the selected theme
+                recent_response: recentResponse // Send the most recent GPT response
+            })
         });
 
         const data = await response.json();
