@@ -1,5 +1,4 @@
-swig3.0
-box2d
+swig
 g++
 build-essential
 python3-dev
