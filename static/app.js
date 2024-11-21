@@ -1,4 +1,3 @@
-// Initialize the selected theme variable
 let selectedTheme = "";
 let recentResponse = ""; // Variable to store the most recent GPT response
 let isSpeaking = false; // Variable to track if speech is ongoing
@@ -18,26 +17,16 @@ function selectTheme(theme) {
     "HorrorScreen",
     "HistoricalScreen",
   ];
+
   themeScreens.forEach((screen) => {
-    document.getElementById(screen).style.display = "none"; // Hide all theme screens
+    styleNone(screen); // Hide all themes
   });
   // Show the selected theme's description screen
-  document.getElementById(`${theme}DescriptionScreen`).style.display = "flex";
-}
-
-// New functionality to start the game
-function startGame(theme) {
-  // Hide the description screen
-  document.getElementById(theme + "DescriptionScreen").style.display = "none";
-
-  // Show the selected theme's game screen
-  document.getElementById(theme + "Screen").style.display = "block";
-  // Add event listener for the "Enter" key on the user input field
-  addEnterKeyListener(theme); // Add listener for the game screen
+  themePosition(`${theme}DescriptionScreen`, "flex");
 }
 
 // Function to add "Enter" key event listener to the user input field
-function addEnterKeyListener(theme) {
+const addEnterKeyListener = (theme) => {
   const userInputField = document.getElementById(`${theme}UserInput`);
   // Listen for Enter key in the user input field
   userInputField.addEventListener("keypress", function (event) {
@@ -45,31 +34,42 @@ function addEnterKeyListener(theme) {
       submitInput(theme); // Trigger the submit function when "Enter" is pressed
     }
   });
-}
+};
+
+// Function for starting game
+const startGame = (theme) => {
+  // hiding  description screen
+  styleNone(theme + "DescriptionScreen");
+
+  // Show the selected theme's game screen
+  themePosition(theme + "Screen", "block");
+
+  addEnterKeyListener(theme); // Add listener for the game screen
+};
 
 // Function to handle input submission for the selected theme
-async function submitInput(theme) {
-  const userInput = document.getElementById(`${theme}UserInput`).value; // Get user input from the corresponding input field
+const submitInput = async (theme) => {
+  const userInput = document.getElementById(`${theme}UserInput`).value; // Get user input
 
   if (userInput.trim() === "") {
-    // Display an alert for empty input
+    //alert for empty input
     alert("Please enter a valid command!");
-    return; // Don't proceed if the input is empty
+    return;
   }
 
-  const responseDiv = document.getElementById(`${theme}ResponseBox`); // Response box to display messages
+  const responseDiv = document.getElementById(`${theme}ResponseBox`); // Response box for displaying messages
 
   try {
-    // Send the user inputand recent response to the backend
+    // Send the user input and recent response to the backend
     const response = await fetch("https://gamin2-repo-3.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        prompt: userInput, // Send the current user input
-        theme: theme, // Send the selected theme
-        recent_response: recentResponse, // Send the most recent GPT response
+        prompt: userInput,
+        theme: theme,
+        recent_response: recentResponse,
       }),
     });
 
@@ -77,15 +77,13 @@ async function submitInput(theme) {
     if (data.gpt_response) {
       recentResponse = data.gpt_response; // Store the most recent response
 
-      const gptResponse = recentResponse;
-
       // Display the user's input and GPT's response on the screen
       responseDiv.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
       responseDiv.innerHTML += `<p><strong>Game:</strong> ${recentResponse}</p>`;
 
-      // Clear the input field
+      // Clear  input field
       document.getElementById(`${theme}UserInput`).value = "";
-      // Scroll the response box to the bottom after adding content
+      // Scroll  response box
       scrollToBottom(theme);
     } else if (data.error) {
       responseDiv.innerHTML += `<p><strong>Error:</strong> ${data.error}</p>`;
@@ -93,51 +91,49 @@ async function submitInput(theme) {
   } catch (error) {
     responseDiv.innerHTML += `<p><strong>Error:</strong> Unable to communicate with the server.</p>`;
   }
-}
+};
 // Function to scroll the response box to the bottom
-function scrollToBottom(theme) {
+const scrollToBottom = (theme) => {
   const responseBox = document.getElementById(`${theme}ResponseBox`); // Get the response box by ID
   responseBox.scrollTop = responseBox.scrollHeight; // Set scroll position to the bottom
-}
-// Function to speak or stop speaking the most recent response
-function speakResponse(theme) {
+};
+// Function to speak or stop speaking the  response
+const speakResponse = (theme) => {
   const speakButton = document.getElementById(`${theme}SpeakButton`);
 
   if (isSpeaking) {
     window.speechSynthesis.cancel();
     isSpeaking = false;
-    speakButton.innerHTML = "&#x1F50A;"; // Change to speaker on icon
+    speakButton.innerHTML = "&#x1F50A;";
   } else {
     if (recentResponse) {
       textToSpeech(recentResponse, theme);
       isSpeaking = true;
-      speakButton.innerHTML = "&#x1F507;"; // Change to speaker off icon
+      speakButton.innerHTML = "&#x1F507;";
     }
   }
-}
+};
 // Function to convert GPT response to speech using Web Speech API
-function textToSpeech(text) {
+const textToSpeech = (text) => {
   if ("speechSynthesis" in window) {
     // Check if the browser supports TTS
-    currentSpeech = new SpeechSynthesisUtterance(text); // Create a SpeechSynthesisUtterance object
-    currentSpeech.lang = "en-GB"; // Set the language to British English
+    currentSpeech = new SpeechSynthesisUtterance(text);
+    currentSpeech.lang = "en-GB";
 
     currentSpeech.onend = function () {
       // Reset speaking state when speech ends
       isSpeaking = false;
-      document.getElementById("speakButton").innerHTML = "&#x1F50A;"; // Change button back to speaker on icon
+      document.getElementById("speakButton").innerHTML = "&#x1F50A;";
     };
 
-    window.speechSynthesis.speak(currentSpeech); // Speak the text
+    window.speechSynthesis.speak(currentSpeech);
   } else {
     console.log("Text-to-Speech not supported in this browser.");
   }
-}
+};
 
 // Back button functionality
-function goBack() {
-  console.log("Back button clicked"); // Log when back button is clicked
-
+const goBack = () => {
   // Define references to key elements
   const welcomePage = document.getElementById("welcomePage");
   const descriptionScreen = document.getElementById(
@@ -145,46 +141,40 @@ function goBack() {
   );
   const gameScreen = document.getElementById(`${selectedTheme}Screen`);
   const responseBox = document.getElementById(`${selectedTheme}ResponseBox`);
-  //stop speaking when pressed back
   if (isSpeaking) {
     window.speechSynthesis.cancel(); // Stop the speech
     isSpeaking = false;
     document.getElementById(`${selectedTheme}SpeakButton`).innerHTML =
-      "&#x1F50A;"; // Change button back to speaker on icon
+      "&#x1F50A;"; //
   }
 
-  // Clear the response box when the player presses back
+  // Clear the response box oon click of back
   if (responseBox) {
-    responseBox.innerHTML = ""; // Clear the content of the response box
+    responseBox.innerHTML = "";
   }
 
-  // Check if we are on the Game Screen
+  // Check  Game Screen is in use
   if (gameScreen && gameScreen.style.display === "block") {
-    console.log("Currently on Game Screen. Going back to Description Screen."); // Debugging log
-    gameScreen.style.display = "none"; // Hide the Game Screen
-    descriptionScreen.style.display = "flex"; // Show the Description Screen
+    console.log("Currently on Game Screen. Going back to Description Screen.");
+    gameScreen.style.display = "none"; // Hide  Game Screen
+    descriptionScreen.style.display = "flex"; // Show  Description Screen
   }
-  // Check if we are on the Description Screen
+  // Check  Description Screen is in use
   else if (descriptionScreen && descriptionScreen.style.display === "flex") {
-    console.log("Currently on Description Screen. Going back to Welcome Page."); // Debugging log
-    descriptionScreen.style.display = "none"; // Hide the Description Screen
-    welcomePage.style.display = "block"; // Show the Welcome Page
+    console.log("Currently on Description Screen. Going back to Welcome Page.");
+    descriptionScreen.style.display = "none"; // Hide  Description Screen
+    welcomePage.style.display = "block"; // Show  Welcome Page
+  } else {
+    console.log("No valid screen found to go back from.");
   }
-  // If neither, log an issue
-  else {
-    console.log("No valid screen found to go back from."); // Debugging log
-  }
-}
-// JavaScript for the Slideshow with Titles and Descriptions
-let slideIndex = 0;
-const slides = document.querySelectorAll(".slide");
+};
 
-function showSlides() {
-  slides.forEach((slide) => (slide.style.display = "none")); // Hide all slides
+const showSlides = () => {
+  slides.forEach((slide) => (slide.style.display = "none")); // Hide  slides
   slideIndex = (slideIndex + 1) % slides.length; // Increment index with wrap-around
   slides[slideIndex].style.display = "block"; // Show the current slide
   setTimeout(showSlides, 4000); // Change slide every 4 seconds
-}
+};
 
-// Start the slideshow on load
+// Start the slideshow on page load
 document.addEventListener("DOMContentLoaded", showSlides);
