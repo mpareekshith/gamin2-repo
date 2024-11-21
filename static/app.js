@@ -73,7 +73,7 @@ const addEnterKeyListener = (theme) => {
    */
   userInputField.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
-      submitInput(theme);
+      handleSubmitInput(theme);
     }
   });
 };
