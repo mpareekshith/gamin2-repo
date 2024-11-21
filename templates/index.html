@@ -70,32 +70,32 @@
         </div>
         <p class="subtitle">Choose your adventure theme to start your journey!</p>
         <div class="theme-selection">
-            <div class="theme-option" onclick="selectTheme('fantasy')">
+            <div class="theme-option" onclick="handleSelectTheme('fantasy')">
                 <img src="fantasy.jpg" alt="Fantasy">
                 <h2>Fantasy Adventure</h2>
                 <p>welcome to the fantasy world of wonderland where magic drives the world</p>
             </div>
-            <div class="theme-option" onclick="selectTheme('sciFi')">
+            <div class="theme-option" onclick="handleSelectTheme('sciFi')">
                 <img src="ai-space.webp" alt="Sci-Fi">
                 <h2>Space Odyssey</h2>
                 <p>Embark on a journey through the stars, where technology and mysteries of the cosmos await.</p>
             </div>
-            <div class="theme-option" onclick="selectTheme('mystery')">
+            <div class="theme-option" onclick="handleSelectTheme('mystery')">
                 <img src="mystry&thriller.jpg" alt="Mystery">
                 <h2>Mystery and Thriller</h2>
                 <p>step into a dark and suspenseful world where every clue unravels a deeper secret.</p>
             </div>
-            <div class="theme-option" onclick="selectTheme('Adventure')">
+            <div class="theme-option" onclick="handleSelectTheme('Adventure')">
                 <img src="medival.webp" alt="Adventure">
                 <h2> Adventure</h2>
                 <p>Dive into a thrilling expedition across uncharted jungles and ancient ruins.</p>
             </div>
-            <div class="theme-option" onclick="selectTheme('Horror')">
+            <div class="theme-option" onclick="handleSelectTheme('Horror')">
                 <img src="Horror.jpg" alt="Horror">
                 <h2> Horror</h2>
                 <p>Enter a chilling realm where shadows lurk, and every sound could be the last thing you hear.</p>
             </div>    
-            <div class="theme-option" onclick="selectTheme('Historical')">
+            <div class="theme-option" onclick="handleSelectTheme('Historical')">
                 <img src="https://img.freepik.com/premium-photo/zombie-apocalypse_602424-840.jpg" alt="Historical">
                 <h2>Zombie Apocalypse</h2>   
                 <p>Journey back in time to witness and shape the events that changed history forever.</p> 
@@ -110,8 +110,8 @@
             <h2>Fantasy Adventure</h2>
             <img class="des-img" src="https://img.freepik.com/premium-photo/visionary-elf-glowing-sunset-majestic-fantasy-landscape_934697-42432.jpg?w=360" alt="">
             <p>Get ready to embark on an epic adventure, Wanderer! The mystical world is full of enchanted forests, glowing rivers, and towering castles. Strange creatures and ancient secrets await you as your choices lead you through a land of wonder, danger, and discovery. Every decision shapes your destiny in this magical realm</p>
-            <button id="backButton" onclick="goBack()">&#x2190;</button>
-            <button class="start-game-button" onclick="startGame('fantasy')">&#9655;Play</button>
+            <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+            <button class="start-game-button" onclick="handleStartGame('fantasy')">&#9655;Play</button>
             </div>
         </div>
     <div id="sciFiDescriptionScreen" class="description-container" style="display: none;">
@@ -119,8 +119,8 @@
                 <h2>Space Odyssey</h2>
                 <img class="des-img" src="https://img.freepik.com/premium-photo/astronaut-looking-out-space-window_861171-1409.jpg" alt="">
                 <p>Get ready to board, Captain! Your motivated crew is ready to navigate uncharted star systems and strange planets. Encounter unexpected challenges and discoveries as your decisions shape the journey, guiding the fate of your crew and the success of your mission. Every moment is a dynamic, thrilling adventure through the unknown cosmos...</p>
-                <button id="backButton" onclick="goBack()">&#x2190;</button>
-                <button class="start-game-button" onclick="startGame('sciFi')">&#9655;Play</button>
+                <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+                <button class="start-game-button" onclick="handleStartGame('sciFi')">&#9655;Play</button>
             </div>
         </div>
     
@@ -129,16 +129,16 @@
                 <h2>Mystery and Thriller</h2>
                 <img class="des-img" src="https://img.freepik.com/premium-photo/murder-mystery_1029473-194793.jpg" alt="mystimg">
                 <p>In a suspenseful mystery setting, you, the detective's assistant, must help solve a perplexing case. With unexpected twists and offbeat inputs from the player, the story evolves as you uncover clues, face suspects, and uncover dark secrets, ensuring that each decision brings you closer to solving the mystery.</p>
-                <button id="backButton" onclick="goBack()">&#x2190;</button>
-                <button class="start-game-button" onclick="startGame('mystery')">&#9655;Play</button>
+                <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+                <button class="start-game-button" onclick="handleStartGame('mystery')">&#9655;Play</button>
             </div>
         </div>
         <div id="AdventureDescriptionScreen" class="description-container" style="display: none;">
             <div class="description-card">
                 <h2>Adventure</h2>
                 <p>Lost in a dense jungle after a tragic accident, you, the explorer, are surrounded by dangerous wildlife and must find a way out. As you navigate the perilous terrain, uncover hidden secrets, and encounter ancient threats, every decision you make impacts your survival and escape from the jungle.</p>
-                <button id="backButton" onclick="goBack()">&#x2190;</button>
-                <button class="start-game-button" onclick="startGame('Adventure')">&#9655;Play</button>
+                <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+                <button class="start-game-button" onclick="handleStartGame('Adventure')">&#9655;Play</button>
             </div>
         </div>
         
@@ -147,8 +147,8 @@
                 <h2>Horror</h2>
                 <img class="des-img" src="https://img.freepik.com/premium-photo/dark-monster-character_910054-41377.jpg" alt="horimg">
                 <p>Trapped inside a haunted house after a mysterious event, you, the investigator, must uncover its chilling secrets and escape. As you navigate dark, shadowy rooms, encounter ghostly apparitions, and piece together eerie events, your choices shape the terrifying experience and the dark truths of the house.</p>
-                <button id="backButton" onclick="goBack()">&#x2190;</button>
-                <button class="start-game-button" onclick="startGame('Horror')">&#9655;Play</button>
+                <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+                <button class="start-game-button" onclick="handleStartGame('Horror')">&#9655;Play</button>
             </div>
         </div>
     
@@ -156,8 +156,8 @@
             <div class="description-card">
                 <h2>Zombie Apocalypse</h2>
                 <p>Awakening in a hospital in London during the early days of a zombie apocalypse, you must navigate the desolate city to find your missing sister. Moving through iconic London landmarks while evading zombies and scavenging for supplies, your choices will dictate your survival in this gripping and deadly journey.</p>
-                <button id="backButton" onclick="goBack()">&#x2190;</button>
-                <button class="start-game-button" onclick="startGame('Historical')">&#9655;Play</button>
+                <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+                <button class="start-game-button" onclick="handleStartGame('Historical')">&#9655;Play</button>
             </div>
         </div>
         <!-- Theme Gameplay Screens -->
@@ -165,51 +165,51 @@
         <h1 class="game-title">Fantasy Adventure</h1>
         <div  class="response-box" id="fantasyResponseBox"></div>
         <input type="text" id="fantasyUserInput" placeholder="Enter your command here...">
-        <button id="subbutton" onclick="submitInput('fantasy')">Submit</button>
-        <button id="backButton" onclick="goBack()">&#x2190;</button>
-        <button id="fanSpeakButton" onclick="speakResponse('fantasy')">&#x1F50A;</button> <!-- Speaker button -->
+        <button id="subbutton" onclick="handleSubmitInput('fantasy')">Submit</button>
+        <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+        <button id="fanSpeakButton" onclick="handleSpeake('fantasy')">&#x1F50A;</button> <!-- Speaker button -->
     </div>
 
     <div id="sciFiScreen" class="game-container" style="display: none;">
         <h1 class="game-title">Stellar Chronicles</h1>
         <div  class="response-box" id="sciFiResponseBox"></div>
         <input type="text" id="sciFiUserInput" placeholder="Enter your command here...">
-        <button id="subbutton" onclick="submitInput('sciFi')">Submit</button>
-        <button id="backButton" onclick="goBack()">&#x2190;</button>
-        <button id="spaSpeakButton" onclick="speakResponse('sciFi')">&#x1F50A;</button> <!-- Unique Speaker button -->
+        <button id="subbutton" onclick="handleSubmitInput('sciFi')">Submit</button>
+        <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+        <button id="spaSpeakButton" onclick="handleSpeake('sciFi')">&#x1F50A;</button> <!-- Unique Speaker button -->
     </div>
 
     <div id="mysteryScreen" class="game-container" style="display: none;">
         <h1 class="game-title">Whispers in the Shadows</h1>
         <div  class="response-box" id="mysteryResponseBox"></div>
         <input type="text" id="mysteryUserInput" placeholder="Enter your command here...">
-        <button id="subbutton" onclick="submitInput('mystery')">Submit</button>
-        <button id="backButton" onclick="goBack()">&#x2190;</button>
-        <button id="mysSpeakButton" onclick="speakResponse('mystery')">&#x1F50A;</button> <!-- Unique Speaker button -->
+        <button id="subbutton" onclick="handleSubmitInput('mystery')">Submit</button>
+        <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+        <button id="mysSpeakButton" onclick="handleSpeake('mystery')">&#x1F50A;</button> <!-- Unique Speaker button -->
     </div>
     <div id="AdventureScreen" class="game-container" style="display: none;">
         <h1 class="game-title">The Lost Expedition</h1>
         <div  class="response-box" id="AdventureResponseBox"></div>
         <input type="text" id="AdventureUserInput" placeholder="Enter your command here...">
-        <button id="subbutton" onclick="submitInput('Adventure')">Submit</button>
-        <button id="backButton" onclick="goBack()">&#x2190;</button>
-        <button id="advSpeakButton" onclick="speakResponse('Adventure')">&#x1F50A;</button> <!-- Unique Speaker button -->
+        <button id="subbutton" onclick="handleSubmitInput('Adventure')">Submit</button>
+        <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+        <button id="advSpeakButton" onclick="handleSpeake('Adventure')">&#x1F50A;</button> <!-- Unique Speaker button -->
     </div>
     <div id="HorrorScreen" class="game-container" style="display: none;">
         <h1 class="game-title">Eternal Nightmares</h1>
         <div  class="response-box" id="HorrorResponseBox"></div>
         <input type="text" id="HorrorUserInput" placeholder="Enter your command here...">
-        <button id="subbutton" onclick="submitInput('Horror')">Submit</button>
-        <button id="backButton" onclick="goBack()">&#x2190;</button>
-        <button id="horSpeakButton" onclick="speakResponse('Horror')">&#x1F50A;</button> <!-- Unique Speaker button -->
+        <button id="subbutton" onclick="handleSubmitInput('Horror')">Submit</button>
+        <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+        <button id="horSpeakButton" onclick="handleSpeake('Horror')">&#x1F50A;</button> <!-- Unique Speaker button -->
     </div>
     <div id="HistoricalScreen" class="game-container" style="display: none;">
         <h1 class="game-title">The Last Stand</h1>
         <div  class="response-box" id="HistoricalResponseBox"></div>
         <input type="text" id="HistoricalUserInput" placeholder="Enter your command here...">
-        <button id="subbutton" onclick="submitInput('Historical')">Submit</button>
-        <button id="backButton" onclick="goBack()">&#x2190;</button>
-        <button id="hisSpeakButton" onclick="speakResponse('Historical')">&#x1F50A;</button> <!-- Unique Speaker button -->
+        <button id="subbutton" onclick="handleSubmitInput('Historical')">Submit</button>
+        <button id="backButton" onclick="handleBackButtonClicked()">&#x2190;</button>
+        <button id="hisSpeakButton" onclick="handleSpeake('Historical')">&#x1F50A;</button> <!-- Unique Speaker button -->
     </div>
 
     <script src="/static/app.js" defer></script>
