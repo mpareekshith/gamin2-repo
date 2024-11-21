@@ -4,6 +4,7 @@ let isSpeaking = false;
 let currentSpeech = null;
 
 const handleSelectTheme = (theme) => {
+  selectedTheme = theme;
   /*
    *Hide Welcome page ->
    *hid welcome pge by setting display to none and
@@ -43,7 +44,6 @@ const handleSelectTheme = (theme) => {
 };
 
 const handleStartGame = (theme) => {
-  selectedTheme = theme;
   /*
    * Hide description screen ->
    * Will append DescriptionScreen  to the theem  will be hidden by setting display as none, and for visiblity will set it to block
@@ -258,4 +258,4 @@ const handleSlideShow = () => {
 };
 
 // once  page is loaded start tht slide show
-document.addEventListener("DOMContentLoaded", showSlides);
+document.addEventListener("DOMContentLoaded", handleSlideShow);
