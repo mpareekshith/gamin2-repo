@@ -10,11 +10,12 @@ load_dotenv()  # Load environment variables from .env file
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)  
+# Enable CORS for all routes
 # Homepage route
 @app.route('/')
 def home():
-    # Renders a basic HTML template if you have an `index.html` in the `templates` folder
+# Render basic html template index.html file in templates folder 
     return render_template('index.html')
 
 @app.route('/chat', methods=['POST'])
