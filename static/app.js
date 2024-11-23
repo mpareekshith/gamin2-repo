@@ -76,7 +76,7 @@ const handleSubmitInput = async (theme) => {
   const responseDiv = document.getElementById(`${theme}ResponseBox`);
 
   try {
-    const response = await fetch("https://gamin2-repo-3.onrender.com/chat", {
+    const response = await fetch("https://my-project-u7mh.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
